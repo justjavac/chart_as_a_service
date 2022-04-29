@@ -23,5 +23,5 @@ jobs:
       - name: Lint
         run: deno lint
 
-      - name: Tests
-        run: deno test
+      # - name: Tests
+      #   run: deno test
