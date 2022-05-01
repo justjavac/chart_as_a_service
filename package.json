@@ -1,0 +1,53 @@
+{
+  "name": "chart-ol",
+  "version": "0.1.0",
+  "type": "module",
+  "repository": "git@github.com:rx-ts/chart-ol.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "run-p lint:*",
+    "lint:es": "eslint . --cache",
+    "lint:tsc": "tsc --noEmit",
+    "prepare": "simple-git-hooks",
+    "start": "vc dev",
+    "typecov": "type-coverage"
+  },
+  "dependencies": {
+    "echarts": "^5.3.2"
+  },
+  "devDependencies": {
+    "@1stg/common-config": "^4.0.0",
+    "ts-node": "^10.7.0",
+    "type-coverage": "^2.21.1",
+    "typescript": "^4.6.4",
+    "vercel": "^24.2.0"
+  },
+  "resolutions": {
+    "prettier": "^2.6.2"
+  },
+  "commitlint": {
+    "extends": "@1stg"
+  },
+  "eslintConfig": {
+    "extends": "@1stg"
+  },
+  "eslintIgnore": [
+    "!/.*.js"
+  ],
+  "prettier": "@1stg/prettier-config",
+  "renovate": {
+    "extends": [
+      "@1stg"
+    ]
+  },
+  "typeCoverage": {
+    "atLeast": 100,
+    "cache": true,
+    "detail": true,
+    "ignoreAsAssertion": true,
+    "showRelativePath": true,
+    "strict": true,
+    "update": true
+  }
+}

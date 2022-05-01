@@ -1,6 +1,4 @@
-*.log
-.cache
-.DS_Store
-*bak
-.history
-.temp/**
+.*cache
+.vercel
+*.tsbuildinfo
+node_modules
