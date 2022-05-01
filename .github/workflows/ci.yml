@@ -37,8 +37,8 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Lint
-        run: pnpm lint
-
-      - name: Type Coverage
-        run: pnpm typecov
+      - name: Build and Lint
+        run: |
+          pnpm build
+          pnpm lint
+          pnpm typecov

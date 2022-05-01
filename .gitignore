@@ -2,3 +2,4 @@
 .vercel
 *.tsbuildinfo
 node_modules
+/api/_index.html

@@ -1,4 +1,11 @@
-import type { VercelApiHandler, VercelRequestQuery } from '@vercel/node'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
+import type {
+  VercelRequest,
+  VercelRequestQuery,
+  VercelResponse,
+} from '@vercel/node'
 import { init } from 'echarts'
 
 export type RequestQuery = VercelRequestQuery & {
@@ -9,8 +16,20 @@ export type RequestQuery = VercelRequestQuery & {
 
 const PREFERS_COLOR_SCHEME = 'Sec-CH-Prefers-Color-Scheme'.toLowerCase()
 
-const handler: VercelApiHandler = (req, res) => {
+let HTML: string
+
+export default async (req: VercelRequest, res: VercelResponse) => {
   const query = req.query as RequestQuery
+
+  if (!query.option) {
+    if (!HTML) {
+      HTML = await fs.readFile(path.resolve('api/_index.html'), 'utf8')
+    }
+    res.setHeader('Content-Type', 'text/html')
+    res.end(HTML)
+    return
+  }
+
   const width = Number.parseInt(query.w ?? '500')
   const height = Number.parseInt(query.h ?? '300')
 
@@ -23,9 +42,6 @@ const handler: VercelApiHandler = (req, res) => {
   let svg: string
 
   try {
-    if (!query.option) {
-      throw new Error('`query.option` in url is required')
-    }
     const chart = init(undefined, theme, {
       renderer: 'svg',
       ssr: true,
@@ -64,5 +80,3 @@ const handler: VercelApiHandler = (req, res) => {
 
   res.end(svg)
 }
-
-export default handler
