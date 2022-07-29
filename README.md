@@ -1,4 +1,4 @@
-# chart online
+# Chart Service
 
 服务器端生成 SVG 图片，可以嵌入到任何地方。
 
