@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std@0.149.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.150.0/http/server.ts";
 import * as echarts from "https://cdn.jsdelivr.net/npm/echarts/dist/echarts.esm.js";
 import { CSS, render } from "https://deno.land/x/gfm@0.1.22/mod.ts";
 
